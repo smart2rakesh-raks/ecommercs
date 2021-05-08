@@ -1,0 +1,137 @@
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+html {
+    background: linear-gradient( #90ee90, #00ffff);
+	height: auto%;
+		}
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.header {
+  overflow: hidden;
+  background-color: #ccffff;
+  padding: 15px 15px;
+    border-radius: 5px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+
+}
+
+.header a.logo {
+  font-size: 50px;
+  font-weight: 500;
+
+}
+
+.header a:hover {
+  background-color: #ccffff;
+  color: black;
+}
+
+.header a.active:hover {
+  background-color: dodgerblue;
+  color: black;
+}
+
+.header-right {
+  float: right;
+
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+.slidecontainer {
+    width: 80%;
+
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 15px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: dodgerblue;
+    cursor: pointer;
+
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: dodgerblue;
+    cursor: pointer;
+
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+  <a href="http://127.0.0.1:8000/" class="logo">Harrak</a>
+  <div class="header-right">
+    <a class="active" href="http://127.0.0.1:8000/">Home</a>
+	<a class="active" href="http://localhost:8000/contactus">Contact Us</a>
+    <a class="active" href="http://localhost:8000/aboutus">About Us</a>
+	 <a class="active" href="http://localhost:8000/cartpage/">Cart <font color="black">{{cartitemnumber}}</font></a>
+	 {% if request.session.isuserloggedin  %}
+	 <a class="active" href="http://localhost:8000/logout">{{ request.session.isuserloggedin }} &nbsp;&nbsp;logout</a>
+	  {% else %}
+	 <a class="active" href="http://localhost:8000/loginpage">Sign in </a>
+	 {% endif %}
+  </div>
+</div>
+
+{% block content %}
+
+{% endblock %}
+
+<div >
+  <p><center>&copy; 2020 All Rights Reserved </p>
+</div>
+</body>
+</html>
